@@ -20,9 +20,11 @@ function getMetroStations(map) {
             position: metroLocations[location].center,
             map: map,
             icon: {
-                url: 'https://i.ibb.co/b1J1GsZ/Brussels-metro-icon-svg.png',
-                scaledSize: new google.maps.Size(20, 20),
-                anchor: new google.maps.Point(8,8)
+                path: google.maps.SymbolPath.CIRCLE,
+                scale: 7,
+                fillColor: '#FF5733',
+                fillOpacity: 1,
+                strokeWeight: 1,
             },
             zIndex: -5
         });
@@ -31,39 +33,31 @@ function getMetroStations(map) {
     return metroStations;
 }
 
-async function getAlmatyBikeStations(map) {
-    const url = 'https://almatybike.kz/api/stations/get';
-    let stations;
-    try {
-        fetch('https://api.github.com/repos/javascript-tutorial/en.javascript.info/commits')
-            .then(response => response.json())
-            .then(json => {
-                json.forEach(station => {
-                    if (station.is_deleted != 0) return;
-                    if (station.is_hidden != 0) return;
-                    if (station.is_sales != 0) return;
-                    const latLng = new google.maps.LatLng(station.lat, station.lng);
-                    const scale = 5;
-                    let icon = {
+function getBikeshareStations(map) {
+    const bikeshareStations = [];
+    const URL = 'https://almatybike.kz/api/stations/get';
+    fetch(URL)
+        .then(response => response.json())
+        .then(stations => {
+            stations.forEach(station => {
+                if (station.is_deleted != 0) return;
+                if (station.is_hidden != 0) return;
+                if (station.is_sales != 0) return;
+                const latLng = new google.maps.LatLng(station.lat, station.lng);
+                const marker = new google.maps.Marker({
+                    position: latLng,
+                    map: map,
+                    icon: {
                         path: google.maps.SymbolPath.CIRCLE,
-                        scale: scale,
-                        fillColor: '#f23005',
+                        scale: 5,
+                        fillColor: '#DAF7A6',
                         fillOpacity: 1,
                         strokeWeight: 1,
-                    };
-                    if (station.is_not_active != 0) {
-                        icon.fillColor = '#eeeeee'
-                    }
-                    const stationMarker = new google.maps.Marker({
-                        position: latLng,
-                        map: map,
-                        icon: icon,
-                    });
-                    bikeshareStations.push(stationMarker);
+                    },
+                    zIndex: -6
                 });
-            });
-    } catch(err) {
-        return false;
-    }
-    
+                bikeshareStations.push(marker);
+        });
+    });
+    return bikeshareStations;
 }
