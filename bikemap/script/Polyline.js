@@ -74,7 +74,8 @@ class Polyline {
         return {
             'strokeColor': this._polyline.get('strokeColor'),
             'strokeOpacity': this._polyline.get('strokeOpacity'),
-            'strokeWeight': this._polyline.get('strokeWeight')
+            'strokeWeight': this._polyline.get('strokeWeight'),
+            'icons': this._polyline.get('icons')
         }
     }
 
@@ -87,6 +88,9 @@ class Polyline {
         }
         if (polylineOptions.strokeWeight) {
             this._polyline.set('strokeWeight', polylineOptions.strokeWeight);
+        }
+        if (polylineOptions.icons) {
+            this._polyline.set('icons', polylineOptions.icons);
         }
     }
 

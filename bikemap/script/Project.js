@@ -51,6 +51,7 @@ class Project {
                         path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
                         scale: 1.5
                     },
+                    offset: '50px',
                     repeat: '30px'
                 }],
             },
@@ -187,6 +188,9 @@ class Project {
             }
             if (polylineOptions.strokeWeight) {
                 this._drawingManager.polylineOptions.strokeWeight = polylineOptions.strokeWeight;
+            }
+            if (polylineOptions.icons) {
+                this._drawingManager.polylineOptions.icons = polylineOptions.icons;
             }
         }
     }
