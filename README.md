@@ -1,2 +1,3 @@
 # sultanbayev.github.io
-GitHub pages open repository
+
+[bikemap](https://sultanbayev.github.io/bikemap/) - google map tool to plan bike network and other stuff 
