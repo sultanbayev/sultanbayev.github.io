@@ -37,7 +37,6 @@ class Project {
                 strokeColor: '#000000',
                 strokeOpacity: 1,
                 strokeWeight: 1,
-                zIndex: -5,
                 strokePosition: google.maps.StrokePosition.OUTSIDE
             },
             polylineOptions: {
