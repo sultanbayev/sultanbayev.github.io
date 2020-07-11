@@ -76,6 +76,7 @@ class Project {
 
         this._bikeshareStations = getBikeshareStations(this._map)
         this._metroStations = getMetroStations(this._map);
+        this.setBikeshareStationsVisible(false);
         this._stationsVisibilityControl = new StationsVisibilityControl(this);
         this._map.controls[4].push(this._stationsVisibilityControl.controlUi);
 
