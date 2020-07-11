@@ -131,7 +131,7 @@ class PolylineControl {
                 strokeColor: input.value
             })
         }
-        this._project.updateCircleOptions({
+        this._project.updatePolylineOptions({
             strokeColor: input.value
         });
     }
@@ -143,7 +143,7 @@ class PolylineControl {
                 strokeOpacity: input.value
             })
         }
-        this._project.updateCircleOptions({
+        this._project.updatePolylineOptions({
             strokeOpacity: input.value
         });
     }
@@ -155,7 +155,7 @@ class PolylineControl {
                 strokeWeight: input.value
             })
         }
-        this._project.updateCircleOptions({
+        this._project.updatePolylineOptions({
             strokeWeight: input.value
         });
     }

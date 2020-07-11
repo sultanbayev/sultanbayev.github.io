@@ -52,7 +52,6 @@ class Project {
                         path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
                         scale: 1.5
                     },
-
                     repeat: '30px'
                 }],
             },
