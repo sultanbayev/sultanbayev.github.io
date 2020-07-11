@@ -1,0 +1,79 @@
+#map {
+    height: 90vh;
+    width: 99vw;
+}
+
+.control-container {
+    padding: 3px 10px;
+}
+
+#radius-circle {
+    width: 60px;
+}
+
+#fill-opacity-circle, #stroke-opacity-circle, #stroke-weight-circle, #stroke-opacity-polyline, #stroke-weight-polyline {
+    width: 50px;
+}
+
+#radius-circle, #fill-color-circle, #fill-opacity-circle, #category-polyline, #stroke-opacity-circle, #stroke-color-circle, #stroke-weight-circle, #stroke-opacity-polyline, #stroke-color-polyline, #stroke-weight-polyline {
+    margin-left: 5px;
+}
+
+#delete-circle, #delete-polyline {
+    cursor: pointer;
+    color: #979797;
+    float: right;
+}
+
+#delete-category, #add-category {
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+#check-slope-polyline {
+    cursor: pointer;
+    float: right;
+    color: rgb(36, 146, 8);
+}
+
+.vertex-delete {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.polyline-info {
+    user-select: none;
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    margin: 10px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
+    font-family: Roboto, Arial, sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    z-index: 0;
+    right: 0px;
+    top: -5px;
+}
+
+.control-close {
+    cursor: pointer;
+    display: block;
+}
+
+.control-name {
+    font-size: 16px;
+    font-weight: 700;
+    flex-grow: 1;
+}
+
+.control-header {
+    display: flex;
+    justify-content: stretch;
+    padding: 5px 10px;
+    margin-bottom: 5px;
+    background-color: #f5f5dc;
+}
+
+.category-line {
+    padding: 3px 10px 3px 3px;
+}

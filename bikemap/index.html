@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Almaty Bicycle Network v3</title>
+</head>
+
+<body>
+    <div id="map"></div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTvYTwtxu8XpDawVvmoKLSs_E4WGX7gMQ&libraries=visualization,drawing">
+    </script>
+    <script src="script/Circle.js" charset="utf-8"></script>
+    <script src="script/Polyline.js" charset="utf-8"></script>
+    <script src="script/CircleControl.js" charset="utf-8"></script>
+    <script src="script/PolylineControl.js" charset="utf-8"></script>
+    <script src="script/CirclesVisibilityControl.js" charset="utf-8"></script>
+    <script src="script/PolylinesVisibilityControl.js" charset="utf-8"></script>
+    <script src="script/Project.js" charset="utf-8"></script>
+    <script>
+        google.maps.event.addDomListener(window, 'load', () => {
+            new Project()
+        });
+    </script>
+</body>
+
+</html>
