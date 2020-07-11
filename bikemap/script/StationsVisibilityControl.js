@@ -33,13 +33,13 @@ class StationsVisibilityControl {
         this._checkboxMetro.addEventListener('change', this.onMetroCheckboxChanged);
 
         const labelBikeshare = document.createElement('label');
-        labelBikeshare.htmlFor = 'metro-visibility';
+        labelBikeshare.htmlFor = 'bikeshare-visibility';
         labelBikeshare.style.cursor = 'pointer';
         labelMetro.style.display = 'block';
         this._checkboxBikeshare = document.createElement('input');
         this._checkboxBikeshare.type = 'checkbox';
         this._checkboxBikeshare.checked = true;
-        this._checkboxBikeshare.id = 'metro-visibility';
+        this._checkboxBikeshare.id = 'bikeshare-visibility';
         this._checkboxBikeshare.style.marginRight = '10px';
         labelBikeshare.appendChild(this._checkboxBikeshare);
         labelBikeshare.lastChild.after('Bikeshare stations');
