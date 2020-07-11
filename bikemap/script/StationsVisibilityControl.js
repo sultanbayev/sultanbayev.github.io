@@ -13,14 +13,14 @@ class StationsVisibilityControl {
         this._controlUi.style.backgroundColor = 'rgb(255,255,255)';
         this._controlUi.style.boxShadow = '0 1px 4px -1px rgba(0,0,0,.3)';
         this._controlUi.style.fontFamily = 'Roboto,Arial,sans-serif';
-        this._controlUi.style.fontSize = '16px';
+        this._controlUi.style.fontSize = '13px';
         this._controlUi.style.padding = '10px';
-        this._controlUi.style.width = '110px';
         this._controlUi.title = 'Check to toggle stations visibility';
 
         const labelMetro = document.createElement('label');
         labelMetro.htmlFor = 'metro-visibility';
         labelMetro.style.cursor = 'pointer';
+        labelMetro.style.display = 'block';
         this._checkboxMetro = document.createElement('input');
         this._checkboxMetro.type = 'checkbox';
         this._checkboxMetro.checked = true;
@@ -35,6 +35,7 @@ class StationsVisibilityControl {
         const labelBikeshare = document.createElement('label');
         labelBikeshare.htmlFor = 'metro-visibility';
         labelBikeshare.style.cursor = 'pointer';
+        labelMetro.style.display = 'block';
         this._checkboxBikeshare = document.createElement('input');
         this._checkboxBikeshare.type = 'checkbox';
         this._checkboxBikeshare.checked = true;
