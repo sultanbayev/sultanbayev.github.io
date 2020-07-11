@@ -21,7 +21,10 @@ class Project {
             streetViewControl: false,
             scaleControl: true,
             mapTypeControl: true,
-            zoomControl: false,
+            zoomControl: true,
+            zoomControlOptions: {
+                position: google.maps.ControlPosition.LEFT_TOP
+            },
             styles: styles2
         });
 
