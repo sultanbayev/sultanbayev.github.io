@@ -91,7 +91,7 @@ class PolylineControl {
         this.onDirectionCheckboxChange = this.onDirectionCheckboxChange.bind(this);
         this._directionCheckbox.addEventListener('change', this.onDirectionCheckboxChange);
         directionLabel.appendChild(this._directionCheckbox);
-        directionLabel.lastChild.after('Direction');
+        directionLabel.lastChild.after('Show Direction');
         dirctionDiv.appendChild(directionLabel);
         
         const panelDiv = document.createElement('div');
