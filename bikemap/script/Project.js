@@ -8,6 +8,8 @@ class Project {
         this._currentCircleObj;
         this._currentPolylineObj;
 
+        const styles = [{"elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"administrative.land_parcel","stylers":[{"visibility":"off"}]},{"featureType":"landscape.man_made","stylers":[{"visibility":"off"}]},{"featureType":"landscape.man_made","elementType":"geometry.fill","stylers":[{"color":"#dbdbdb"}]},{"featureType":"landscape.natural","elementType":"geometry.fill","stylers":[{"color":"#d9d9d9"}]},{"featureType":"landscape.natural.landcover","stylers":[{"visibility":"off"}]},{"featureType":"landscape.natural.terrain","stylers":[{"visibility":"off"}]},{"featureType":"poi","stylers":[{"visibility":"off"}]},{"featureType":"poi.business","stylers":[{"visibility":"off"}]},{"featureType":"poi.business","elementType":"geometry","stylers":[{"visibility":"off"}]},{"featureType":"poi.business","elementType":"geometry.fill","stylers":[{"visibility":"off"}]},{"featureType":"poi.park","stylers":[{"visibility":"off"}]},{"featureType":"poi.park","elementType":"geometry.fill","stylers":[{"visibility":"off"}]},{"featureType":"poi.place_of_worship","stylers":[{"visibility":"off"}]},{"featureType":"poi.school","stylers":[{"visibility":"off"}]},{"featureType":"poi.sports_complex","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"geometry","stylers":[{"color":"#8f8f8f"}]},{"featureType":"road","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"road.arterial","elementType":"labels","stylers":[{"visibility":"on"}]},{"featureType":"road.highway","elementType":"labels","stylers":[{"visibility":"on"}]},{"featureType":"road.local","stylers":[{"visibility":"on"},{"weight":0.5}]},{"featureType":"road.local","elementType":"labels","stylers":[{"visibility":"on"}]},{"featureType":"transit","stylers":[{"visibility":"off"}]}];
+
         this._map = new google.maps.Map(document.getElementById('map'), {
             zoom: 13,
             center: {
@@ -20,7 +22,8 @@ class Project {
             scaleControl: true,
             mapTypeControl: true,
             clickableIcons: false,
-            zoomControl: false
+            zoomControl: false,
+            styles: styles
         });
 
         this._elevator = new google.maps.ElevationService;
