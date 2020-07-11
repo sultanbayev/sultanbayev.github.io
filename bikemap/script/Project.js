@@ -80,6 +80,9 @@ class Project {
         this._stationsVisibilityControl = new StationsVisibilityControl(this);
         this._map.controls[4].push(this._stationsVisibilityControl.controlUi);
 
+        this._saveAndOpenControl = new SaveAndOpenControl(this);
+        this._map.controls[6].push(this._saveAndOpenControl.controlUi);
+
         google.maps.event.addListener(this._drawingManager, 'polylinecomplete', (polyline) => {
             this.onPolylineComplete(polyline);
         });
@@ -287,5 +290,41 @@ class Project {
                 s.setVisible(false)
             });
         }
+    }
+
+    saveProject() {
+        const result = {
+            circles: [],
+            polylines: []
+        };
+        this._circleObjs.forEach(c => {
+            const circleJson = {
+                center: c.circle.getCenter(),
+                radius: c.circle.getRadius(),
+                options: {
+                    'fillColor': c.circle.get('fillColor'),
+                    'fillOpacity': c.circle.get('fillOpacity'),
+                    'strokeColor': c.circle.get('strokeColor'),
+                    'strokeOpacity': c.circle.get('strokeOpacity'),
+                    'strokeWeight': c.circle.get('strokeWeight'),
+                }
+            };
+            result.circles.push(circleJson);
+        });
+
+        this._polylineObjs.forEach(p => {
+            const polylineJson = {
+                path: p.polyline.getPath().getArray().map(latLng => latLng.toJSON()),
+                options: {
+                    strokeColor: p.polyline.get('strokeColor'),
+                    strokeOpacity: p.polyline.get('strokeOpacity'),
+                    strokeWeight: p.polyline.get('strokeWeight'),
+                    icons: p.polyline.get('icons')[0].icon.scale,
+                }
+            };
+            result.polylines.push(polylineJson);
+        });
+
+        return JSON.stringify(result);
     }
 }
