@@ -119,7 +119,6 @@ class Polyline {
     delete() {
         google.maps.event.clearInstanceListeners(this._polyline);
         this._polyline.setMap(null);
-        this.deleteSegments();   
         const index = this._project.polylineObjs.findIndex(element => element === this._project.currentPolylineObj);
         if (index != -1) {
             this._project.polylineObjs.splice(index, 1);
