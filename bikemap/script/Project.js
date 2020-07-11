@@ -49,8 +49,10 @@ class Project {
                 strokeWeight: 3,
                 icons: [{
                     icon: {
-                        path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW
+                        path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
+                        scale: 1.5
                     },
+
                     repeat: '30px'
                 }],
             },
