@@ -74,6 +74,11 @@ class Project {
         this._polylinesVisibilityControl = new PolylinesVisibilityControl(this);
         this._map.controls[4].push(this._polylinesVisibilityControl.controlUi);
 
+        this._bikeshareStations = getAlmatyBikeStations(this._map);
+        this._metroStations = getMetroStations(this._map);
+        this._stationsVisibilityControl = new StationsVisibilityControl(this);
+        this._map.controls[4].push(this._stationsVisibilityControl.controlUi);
+
         google.maps.event.addListener(this._drawingManager, 'polylinecomplete', (polyline) => {
             this.onPolylineComplete(polyline);
         });
@@ -115,6 +120,10 @@ class Project {
 
     get polylinesVisibilityControl() {
         return this._polylinesVisibilityControl;
+    }
+    
+    get stationsVisibilityControl() {
+        return this._stationsVisibilityControl;
     }
 
     get polylineObjs() {
@@ -252,6 +261,27 @@ class Project {
         }
     }
 
+    setMetroStationsVisible(boolean) {
+        if (boolean) {
+            this._metroStations.forEach(s => {
+                s.setVisible(true)
+            });
+        } else {
+            this._metroStations.forEach(s => {
+                s.setVisible(false)
+            });
+        }
+    }
 
-
+    setBikeshareStationsVisible(boolean) {
+        if (boolean) {
+            this._bikeshareStations.forEach(s => {
+                s.setVisible(true)
+            });
+        } else {
+            this._bikeshareStations.forEach(s => {
+                s.setVisible(false)
+            });
+        }
+    }
 }
