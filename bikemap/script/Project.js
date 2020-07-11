@@ -47,6 +47,12 @@ class Project {
                 strokeColor: '#000000',
                 strokeOpacity: 1,
                 strokeWeight: 3,
+                icons: [{
+                    icon: {
+                        path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW
+                    },
+                    repeat: '30px'
+                }],
             },
             drawingControl: true,
             drawingControlOptions: {
