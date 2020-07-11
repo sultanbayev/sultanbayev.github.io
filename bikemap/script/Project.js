@@ -74,7 +74,7 @@ class Project {
         this._polylinesVisibilityControl = new PolylinesVisibilityControl(this);
         this._map.controls[4].push(this._polylinesVisibilityControl.controlUi);
 
-        this._bikeshareStations = getAlmatyBikeStations(this._map)
+        this._bikeshareStations = getBikeshareStations(this._map)
         this._metroStations = getMetroStations(this._map);
         this._stationsVisibilityControl = new StationsVisibilityControl(this);
         this._map.controls[4].push(this._stationsVisibilityControl.controlUi);
