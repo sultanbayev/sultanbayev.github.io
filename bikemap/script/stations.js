@@ -12,15 +12,16 @@ function getMetroStations(map) {
         station8: {center: {lat: 43.25976, lng: 76.94514}},
         station9: {center: {lat: 43.27039, lng: 76.94506}},
         station10: {center: {lat: 43.224004, lng: 76.858655}},
-        station11: {center: {lat: 43.224004, lng: 76.858655}},
+        station11: {center: {lat: 43.216784, lng: 76.839683}},
     }
     const metroStations = [];
     for (let location in metroLocations) {
         const station = new google.maps.Marker({
-            position: location.center,
+            position: metroLocations[location].center,
             map: map,
             icon: {
-                url: 'https://i.ibb.co/1rJhbzM/metro.png',
+                url: 'https://i.ibb.co/b1J1GsZ/Brussels-metro-icon-svg.png',
+                scaledSize: new google.maps.Size(20, 20),
                 anchor: new google.maps.Point(8,8)
             },
             zIndex: -5
@@ -30,39 +31,39 @@ function getMetroStations(map) {
     return metroStations;
 }
 
-function getAlmatyBikeStations(map) {
+async function getAlmatyBikeStations(map) {
     const url = 'https://almatybike.kz/api/stations/get';
-    let response;
     let stations;
     try {
-        response = UrlFetchApp.fetch(url);
-        stations = JSON.parse(response);
+        fetch('https://api.github.com/repos/javascript-tutorial/en.javascript.info/commits')
+            .then(response => response.json())
+            .then(json => {
+                json.forEach(station => {
+                    if (station.is_deleted != 0) return;
+                    if (station.is_hidden != 0) return;
+                    if (station.is_sales != 0) return;
+                    const latLng = new google.maps.LatLng(station.lat, station.lng);
+                    const scale = 5;
+                    let icon = {
+                        path: google.maps.SymbolPath.CIRCLE,
+                        scale: scale,
+                        fillColor: '#f23005',
+                        fillOpacity: 1,
+                        strokeWeight: 1,
+                    };
+                    if (station.is_not_active != 0) {
+                        icon.fillColor = '#eeeeee'
+                    }
+                    const stationMarker = new google.maps.Marker({
+                        position: latLng,
+                        map: map,
+                        icon: icon,
+                    });
+                    bikeshareStations.push(stationMarker);
+                });
+            });
     } catch(err) {
         return false;
     }
-    const bikeshareStations = [];
-    stations.forEach(station => {
-        if (station.is_deleted != 0) return;
-        if (station.is_hidden != 0) return;
-        if (station.is_sales != 0) return;
-        const latLng = new google.maps.LatLng(station.lat, station.lng);
-        const scale = 5;
-        let icon = {
-            path: google.maps.SymbolPath.CIRCLE,
-            scale: scale,
-            fillColor: '#f23005',
-            fillOpacity: 1,
-            strokeWeight: 1,
-        };
-        if (station.is_not_active != 0) {
-            icon.fillColor = '#eeeeee'
-        }
-        const stationMarker = new google.maps.Marker({
-            position: latLng,
-            map: map,
-            icon: icon,
-        });
-        bikeshareStations.push(stationMarker);
-        return bikeshareStations;
-    });
+    
 }
