@@ -25,8 +25,8 @@ class SaveAndOpenControl {
         this._openInput.accept = "application/json";
         this._openInput.style.marginLeft = '10px';
         this._openInput.style.width = '150px';
-        this.onOpenInputChangedClicked = this.onOpenInputChangedClicked.bind(this);
-        this._openInput.addEventListener('change', this.onOpenInputChangedClicked);
+        this.onOpenInputChanged = this.onOpenInputChanged.bind(this);
+        this._openInput.addEventListener('change', this.onOpenInputChanged);
 
         this._controlUi.appendChild(this._saveButton);
         this._controlUi.appendChild(this._openInput);
@@ -46,7 +46,7 @@ class SaveAndOpenControl {
         a.click();
     }
 
-    onOpenInputChangedClicked(event) {
+    onOpenInputChanged(event) {
         const input = event.target;
         const files = input.files;
         if (files.length !== 0) {
@@ -66,41 +66,21 @@ class SaveAndOpenControl {
         if (json.circles && json.polylines) {
             const circles = json.circles;
             const polylines = json.polylines;
-            circles.forEach(element => {
-                const options = element.options;
-                options.center = element.center;
-                options.radius = element.radius;
-                options.draggable = false;
-                options.editable = false;
-                options.clickable = true;
-                options.map = this._project.map;
-                const circleObj = this._project.createNewCircleObj(new google.maps.Circle(options), options);
-                circleObj.setEditable(false);
-            });
-            polylines.forEach(element => {
-                const options = element.options;
-                options.path = element.path;
-                options.draggable = false;
-                options.editable = false;
-                options.clickable = true;
-                options.map = this._project.map;
-                const polylineObj = this._project.createNewPolylineObj(new google.maps.Polyline(options), options);
 
-                const segments = element.polylineSegments;
-                segments.forEach(segment => {
-                    const segmentOptions = segment.options;
-                    segmentOptions.map = this._project.map;
-                    segmentOptions.path = segment.path;
-                    const segmentObj = {
-                        segment: new google.maps.Polyline(segmentOptions),
-                        info: segment.info,
-                        color: segment.color
-                    };
-                    polylineObj.createSegmentInfo();
-                    polylineObj.createSegmentInfoListener(segmentObj);
-                    polylineObj.setEditable(false);
-                    polylineObj.polylineSegmentsObjs.push(segmentObj);
-                });
+            circles.forEach(c => {
+                const options = c.options;
+                options.radius = c.radius;
+                const circleObj = new Circle(this._project, new google.maps.Circle());
+                circleObj.circle.setCenter(c.center)
+                circleObj.setOptions(options);
+                circleObj.circle.setMap(this._project.map);
+            });
+            polylines.forEach(p => {
+                const options = p.options;
+                const polylineObj = new Polyline(this._project, new google.maps.Polyline());
+                polylineObj.polyline.setPath(p.path)
+                polylineObj.setOptions(options);
+                polylineObj.polyline.setMap(this._project.map);
             });
         }
     }
