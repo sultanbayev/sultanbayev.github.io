@@ -54,6 +54,7 @@ function getBikeshareStations(map) {
                         fillOpacity: 1,
                         strokeWeight: 1,
                     },
+                    visible: false,
                     zIndex: -6
                 });
                 bikeshareStations.push(marker);

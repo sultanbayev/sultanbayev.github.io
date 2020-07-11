@@ -78,7 +78,6 @@ class Project {
         this._metroStations = getMetroStations(this._map);
         this._stationsVisibilityControl = new StationsVisibilityControl(this);
         this._map.controls[4].push(this._stationsVisibilityControl.controlUi);
-        this.setBikeshareStationsVisible(false);
 
         google.maps.event.addListener(this._drawingManager, 'polylinecomplete', (polyline) => {
             this.onPolylineComplete(polyline);
