@@ -125,10 +125,10 @@ class PolylineControl {
             if (polylineOptions.strokeWeight) {
                 this._strokeWeightInput.value = polylineOptions.strokeWeight
             };
-            if (polylineOptions.icons.length === 0) {
-                this._directionCheckbox.checked = false;
+            if (polylineOptions.icons.length !== 0) {
+                this._directionCheckbox.checked = true
             } else {
-                this._directionCheckbox.checked = true;
+                this._directionCheckbox.checked = false
             }
         }
     }
@@ -182,38 +182,39 @@ class PolylineControl {
     }
 
     onDirectionCheckboxChange() {
-        if (this._project.currentPolylineObj !== undefined) {
-            if (this._directionCheckbox.checked) {
-                this._project.currentPolylineObj.setOptions({
+        if (this._directionCheckbox.checked) {
+            if (this._project.currentPolylineObj !== undefined) {
+                this._project.currentPolylineObj.polyline.setOptions({
                     icons: [{
                         icon: {
-                            path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
+                            path: 1,
                             scale: 1.5
                         },
                         offset: '50px',
                         repeat: '30px'
                     }]
-                });
-                this._project.updatePolylineOptions({
-                    icons: [{
-                        icon: {
-                            path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
-                            scale: 1.5
-                        },
-                        offset: '50px',
-                        repeat: '30px'
-                    }]
-                });
-            } else {
-                this._project.currentPolylineObj.setOptions({
-                    icons: []
-                });
-                this._project.updatePolylineOptions({
-                    icons: []
                 });
             }
-        }
-        
+            this._project.updatePolylineOptions({
+                icons: [{
+                    icon: {
+                        path: 1,
+                        scale: 1.5
+                    },
+                    offset: '50px',
+                    repeat: '30px'
+                }]
+            });
+        } else {
+            if (this._project.currentPolylineObj !== undefined) {
+                this._project.currentPolylineObj.polyline.setOptions({
+                    icons: []
+                });
+            }                
+            this._project.updatePolylineOptions({
+                icons: []
+            });
+        }      
     }
 
     onDeleteClicked() {
