@@ -1,6 +1,6 @@
 'use strict';
 
-export default class PolylineControl {
+class PolylineControl {
     constructor(project) {
 
         this._project = project;

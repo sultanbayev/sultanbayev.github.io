@@ -1,6 +1,6 @@
 'use strict';
 
-export default class CirclesVisibilityControl {
+class CirclesVisibilityControl {
     constructor(project) {
 
         this._project = project;

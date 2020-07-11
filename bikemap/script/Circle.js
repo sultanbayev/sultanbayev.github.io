@@ -1,6 +1,6 @@
 'use strict';
 
-export default class Circle {
+class Circle {
     constructor(project, circle) {
 
         this._project = project;

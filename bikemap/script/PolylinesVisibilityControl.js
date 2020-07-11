@@ -1,6 +1,6 @@
 'use strict';
 
-export default class PolylinesVisibilityControl {
+class PolylinesVisibilityControl {
     constructor(project) {
 
         this._project = project;

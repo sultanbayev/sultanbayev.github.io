@@ -13,15 +13,13 @@
     <div id="map"></div>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTvYTwtxu8XpDawVvmoKLSs_E4WGX7gMQ&libraries=visualization,drawing">
     </script>
-    <script type="module">
-        import Circle from './script/Circle.js';
-        import Polyline from './script/Polyline.js';
-        import CircleControl from './script/CircleControl.js';
-        import PolylineControl from './script/PolylineControl.js';
-        import CirclesVisibilityControl from './script/CirclesVisibilityControl.js';
-        import PolylinesVisibilityControl from './script/PolylinesVisibilityControl.js';
-        import Project from './script/Project.js';
-        
+    <script src="script/Circle.js" charset="utf-8"></script>
+    <script src="script/Polyline.js" charset="utf-8"></script>
+    <script src="script/CircleControl.js" charset="utf-8"></script>
+    <script src="script/PolylineControl.js" charset="utf-8"></script>
+    <script src="script/CirclesVisibilityControl.js" charset="utf-8"></script>
+    <script src="script/Project.js" charset="utf-8"></script>
+    <script>
         google.maps.event.addDomListener(window, 'load', () => {
             new Project()
         });

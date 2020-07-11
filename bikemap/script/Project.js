@@ -1,6 +1,6 @@
 'use strict';
 
-export default class Project {
+class Project {
     constructor() {
 
         this._polylineObjs = [];
