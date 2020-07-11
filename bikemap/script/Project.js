@@ -17,11 +17,9 @@ class Project {
                 lng: 76.92955542657376
             },
             mapTypeId: 'terrain',
-            mapTypeControl: false,
             streetViewControl: false,
             scaleControl: true,
             mapTypeControl: true,
-            clickableIcons: false,
             zoomControl: false,
             styles: styles
         });
