@@ -48,7 +48,7 @@ class Project {
                 strokeWeight: 3,
                 icons: [{
                     icon: {
-                        path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
+                        path: 1,
                         scale: 1.5
                     },
                     offset: '50px',
@@ -89,6 +89,13 @@ class Project {
 
         google.maps.event.addListener(this._drawingManager, 'circlecomplete', (circle) => {
             this.onCircleComplete(circle);
+        });
+
+        google.maps.event.addListener(this._drawingManager, 'drawingmode_changed', () => {
+            if (this._drawingManager.getDrawingMode() === null) {
+                this.resetCurrent();
+                this.resetEditable();
+            }
         });
 
         google.maps.event.addListener(this._map, 'rightclick', () => {
@@ -319,7 +326,7 @@ class Project {
                     strokeColor: p.polyline.get('strokeColor'),
                     strokeOpacity: p.polyline.get('strokeOpacity'),
                     strokeWeight: p.polyline.get('strokeWeight'),
-                    icons: p.polyline.get('icons')[0].icon.scale,
+                    icons: p.polyline.get('icons'),
                 }
             };
             result.polylines.push(polylineJson);
