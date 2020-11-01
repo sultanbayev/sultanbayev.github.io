@@ -199,7 +199,9 @@ let request = {
     other: "other",
 
     death: "death",
-    injury: "injury"
+    injury: "injury",
+
+    heatmapCheck: "heatmapCheck"
 }
 
 function submitHandler(e) {
@@ -291,7 +293,13 @@ function processRecords() {
 
 
         updateStats(records);
-        updateCircles(records);
+        if (!request.heatmapCheck) {
+            removeHeatmap();
+            updateCircles(records);
+        } else {
+            clearMap();
+            setHeatmap(records);
+        }
 
     }).done(() => {
         hideStatus();
@@ -460,44 +468,39 @@ function updateInjuriesStats(records) {
     statsContainer.appendChild(thisStats);
 }
 
+const heatmap = new google.maps.visualization.HeatmapLayer({
+    // radius: 30,
+    // maxIntensity: 10,
+    dissipating: true,
+    gradient: [
+        'rgba(0, 255, 255, 0)',
+        'rgba(0, 255, 255, 1)',
+        'rgba(0, 191, 255, 1)',
+        'rgba(0, 127, 255, 1)',
+        'rgba(0, 63, 255, 1)',
+        'rgba(0, 0, 255, 1)',
+        'rgba(0, 0, 223, 1)',
+        'rgba(0, 0, 191, 1)',
+        'rgba(0, 0, 159, 1)',
+        'rgba(0, 0, 127, 1)',
+        'rgba(63, 0, 91, 1)',
+        'rgba(127, 0, 63, 1)',
+        'rgba(191, 0, 31, 1)',
+        'rgba(255, 0, 0, 1)'
+    ]
+});
 
-// const heatmap = new google.maps.visualization.HeatmapLayer({
-//     data: features,
-//     // radius: 30,
-//     // maxIntensity: 10,
-//     dissipating: true,
-//     gradient: [
-//         'rgba(0, 255, 255, 0)',
-//         'rgba(0, 255, 255, 1)',
-//         'rgba(0, 191, 255, 1)',
-//         'rgba(0, 127, 255, 1)',
-//         'rgba(0, 63, 255, 1)',
-//         'rgba(0, 0, 255, 1)',
-//         'rgba(0, 0, 223, 1)',
-//         'rgba(0, 0, 191, 1)',
-//         'rgba(0, 0, 159, 1)',
-//         'rgba(0, 0, 127, 1)',
-//         'rgba(63, 0, 91, 1)',
-//         'rgba(127, 0, 63, 1)',
-//         'rgba(191, 0, 31, 1)',
-//         'rgba(255, 0, 0, 1)'
-//     ]
-// });
+function setHeatmap(records) {
+    const data = records.map(record => {
+        return {
+            location: new google.maps.LatLng(record.geometry.y, record.geometry.x),
+            weight: 1
+        }
+    })
+    heatmap.setData(data);
+    heatmap.setMap(map);
+}
 
-// heatmap.setMap(map);
-// features.forEach(feature => {
-//     if (feature.isDeath === 1) {
-//         const circle = new google.maps.Circle({
-//                 center: feature.location,
-//                 map: map,
-//                 radius: 50,
-//                 clickable: false,
-//                 fillOpacity: 0.8,
-//                 fillColor: '#000000',
-//                 strokeWeight: 0,
-//                 strokeOpacity: 0,
-//                 strokeColor: '#ff0000',
-//             })
-//     }
-// });
-// });
+function removeHeatmap() {
+    heatmap.setMap(null);
+}

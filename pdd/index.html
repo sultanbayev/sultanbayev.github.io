@@ -11,21 +11,24 @@
     <!-- <div id="count"></div> -->
     <div id="filter">
         <form id="filter-form">
-            <div class="field">
-                <label for="year">Year:</label>
-                <select id="year" name="year">
-                    <option value="2020">2020</option>
-                    <option value="2019">2019</option>
-                    <option value="2018">2018</option>
-                </select>
+            <div class="fields-inline">
+                <div class="field">
+                    <label for="year">Year:</label>
+                    <select id="year" name="year">
+                        <option value="2020">2020</option>
+                        <option value="2019">2019</option>
+                        <option value="2018">2018</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label for="city">City:</label>
+                    <select id="city" name="city">
+                        <option value="АЛМАТЫ">Almaty</option>
+                        <option value="НУР-СУЛТАН">Nur-Sultan</option>
+                    </select>
+                </div>
             </div>
-            <div class="field">
-                <label for="city">City:</label>
-                <select id="city" name="city">
-                    <option value="АЛМАТЫ">Almaty</option>
-                    <option value="НУР-СУЛТАН">Nur-Sultan</option>
-                </select>
-            </div>
+            
             <div class="field">
                 <input type="checkbox" id="alatau" name="alatau" value="alatau" checked>
                 <label for="alatau">Alatau</label>
@@ -80,8 +83,14 @@
                 <label for="injury">Injuries</label>
             </div>
             <div class="submit">
-                <button type="submit">Submit</button>
-                <div id="status"></div>
+                <div>
+                    <input type="checkbox" id="heatmapCheck" name="heatmapCheck" value="heatmapCheck">
+                    <label for="heatmapCheck">Heatmap</label>
+                </div>
+                <div>
+                    <button type="submit">Submit</button>
+                    <div id="status"></div>
+                </div>
             </div>
         </form>
         <div id="stats">
