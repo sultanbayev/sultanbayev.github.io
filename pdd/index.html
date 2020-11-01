@@ -8,6 +8,84 @@
     <title>Accidents</title>
 </head>
 <body>
+    <!-- <div id="count"></div> -->
+    <div id="filter">
+        <form id="filter-form">
+            <div class="field">
+                <label for="year">Year:</label>
+                <select id="year" name="year">
+                    <option value="2020">2020</option>
+                    <option value="2019">2019</option>
+                    <option value="2018">2018</option>
+                </select>
+            </div>
+            <div class="field">
+                <label for="city">City:</label>
+                <select id="city" name="city">
+                    <option value="АЛМАТЫ">Almaty</option>
+                    <option value="НУР-СУЛТАН">Nur-Sultan</option>
+                </select>
+            </div>
+            <div class="field">
+                <input type="checkbox" id="alatau" name="alatau" value="alatau" checked>
+                <label for="alatau">Alatau</label>
+                <input type="checkbox" id="almaly" name="almaly" value="almaly" checked>
+                <label for="almaly">Almaly</label>
+                <input type="checkbox" id="auezov" name="auezov" value="auezov" checked>
+                <label for="auezov">Auezov</label>
+                <input type="checkbox" id="bostandyk" name="bostandyk" value="bostandyk" checked>
+                <label for="bostandyk">Bostandyk</label>
+                <br>
+                <input type="checkbox" id="medeu" name="medeu" value="medeu" checked>
+                <label for="medeu">Medeu</label>
+                <input type="checkbox" id="nauryzbay" name="nauryzbay" value="nauryzbay" checked>
+                <label for="nauryzbay">Nauryzbay</label>
+                <input type="checkbox" id="turksib" name="turksib" value="turksib" checked>
+                <label for="turksib">Turksib</label>
+                <input type="checkbox" id="zhetsu" name="zhetsu" value="zhetsu" checked>
+                <label for="zhetsu">Zhetsu</label>
+            </div>
+            <div class="field">
+                <input type="checkbox" id="type0" name="type0" value="type0" checked>
+                <label for="type0">Car-to-Car</label>
+                <input type="checkbox" id="type1" name="type1" value="type1" checked>
+                <label for="type1">Car-to-Pedestrian</label>
+                <input type="checkbox" id="type2" name="type2" value="type2" checked>
+                <label for="type2">Other</label>
+            </div>
+            <div class="field">
+                <input type="checkbox" id="day" name="day" value="day" checked>
+                <label for="day">Day</label>
+                <input type="checkbox" id="night" name="night" value="night" checked>
+                <label for="night">Night</label>
+                <input type="checkbox" id="dusk" name="dusk" value="dusk" checked>
+                <label for="dusk">Dusk</label>
+                <input type="checkbox" id="daytimeNull" name="daytimeNull" value="daytimeNull" checked>
+                <label for="daytimeNull">Unknown</label>
+            </div>
+            <div class="field">
+                <input type="checkbox" id="sober" name="sober" value="sober" checked>
+                <label for="sober">Sober</label>
+                <input type="checkbox" id="unknown" name="unknown" value="unknown" checked>
+                <label for="unknown">Unknown</label>
+                <input type="checkbox" id="dui" name="dui" value="dui" checked>
+                <label for="dui">Under influence</label>
+                <input type="checkbox" id="other" name="other" value="other" checked>
+                <label for="other">Other</label>
+            </div>
+            <div class="field">
+                <input type="checkbox" id="death" name="death" value="death" checked>
+                <label for="death">Deaths</label>
+                <input type="checkbox" id="injury" name="injury" value="injury" checked>
+                <label for="injury">Injuries</label>
+            </div>
+            <div class="submit">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+        <div id="stats">
+        </div>
+    </div>
     <div id="map"></div>
     
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTvYTwtxu8XpDawVvmoKLSs_E4WGX7gMQ&libraries=visualization,drawing">
