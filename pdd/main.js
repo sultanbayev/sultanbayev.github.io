@@ -160,7 +160,6 @@ function updateCircles(records) {
             zIndex: (record.attributes['FD1R13P2'] != null ? 50000 : 1)
         })
     });
-    hideStatus();
 }
 
 function clearMap() {
@@ -294,6 +293,8 @@ function processRecords() {
         updateStats(records);
         updateCircles(records);
 
+    }).done(() => {
+        hideStatus();
     });
 }
 
