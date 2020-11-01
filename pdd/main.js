@@ -82,11 +82,25 @@ let request = {
 
 function submitHandler(e) {
     e.preventDefault();
+    showStatus();
     const form = e.target;
     const fordData = new FormData(form);
     const newRequest = Object.fromEntries(fordData);
     request = newRequest;
-    processRecords()
+    processRecords();
+    hideStatus();
+}
+
+function showStatus() {
+    const status = document.getElementById('status');
+    status.innerHTML = 'please wait...';
+}
+
+function hideStatus() {
+    setTimeout(() => {
+        const status = document.getElementById('status');
+        status.innerHTML = '';
+    }, 500)
 }
 
 function setMapCenter() {
@@ -260,7 +274,7 @@ function updateAccidentsStatsByCondition(records) {
         + (records.filter(record => record.attributes['FD1R141P1'] === 'время непрерывного нахождения в пути ')).length;
     const statsContainer = document.getElementById('stats');
     const thisStats = document.createElement('div');
-    thisStats.classList.add('sub');
+    thisStats.classList.add('sub2');
     thisStats.innerHTML = sober + ' sober / ' + unknown + ' unknw / ' + dui + ' dui / ' + other + ' other';
     statsContainer.appendChild(thisStats);
 }
@@ -284,36 +298,6 @@ function updateInjuriesStats(records) {
     thisStats.innerHTML = 'Injuried: ' + total;
     statsContainer.appendChild(thisStats);
 }
-
-
-
-// $.getJSON("query2018.json", json => {
-//     const records = json.features;
-        // .filter(feature => feature.attributes['RTA_TYPE'] === 2)
-        // .filter(feature => feature.attributes['FD1R07P2'] === null) // 'ночь', 'день', 'сумерки'
-        // .filter(feature => feature.attributes['FD1R06P2'] === '197513 Ауэзовский район')
-        // .filter(feature => { return (feature.attributes['FD1R141P1'] !== 'трезвый' && feature.attributes['FD1R141P1'] !== null)}) // состояние водителя
-
-
-        // .map(feature => {
-            // return new google.maps.Circle({
-            //     center: new google.maps.LatLng(feature.geometry.y, feature.geometry.x),
-            //     map: map,
-            //     radius: 100,
-            //     clickable: false,
-            //     fillOpacity: (feature.attributes['FD1R13P2'] != null ? 0.6 : 0.2),
-            //     fillColor: (feature.attributes['FD1R13P2'] != null ? '#000000' : '#ff0000'),
-            //     strokeWeight: 0,
-            //     strokeOpacity: 0,
-            //     strokeColor: '#ff0000',
-            //     zIndex: (feature.attributes['FD1R13P2'] != null ? 50000 : 1)
-            // })
-            // return {
-            //     location: new google.maps.LatLng(feature.geometry.y, feature.geometry.x),
-            //     weight: 1,
-            //     isDeath: (feature.attributes['FD1R13P2'] != null ? 1 : 0)
-            // }
-        // });
 
 
     // const heatmap = new google.maps.visualization.HeatmapLayer({
