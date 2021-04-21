@@ -136,6 +136,13 @@ const astana = {
     }
 }
 
+const shymkent = {
+    center: {
+        lat: 42.3417,
+        lng: 69.5901
+    }
+}
+
 const map = new google.maps.Map(document.getElementById('map'), {
     zoom: 12,
     center: almaty.center,
@@ -235,11 +242,15 @@ function setMapCenter() {
         map.setCenter(astana.center);
         map.setZoom(12);
     }
+    if (request.city === 'ШЫМКЕНТ') {
+        map.setCenter(shymkent.center);
+        map.setZoom(12);
+    }
 }
 
 const city = document.getElementById('city');
 city.addEventListener('change', (e) => {
-    if (e.target.value === 'НУР-СУЛТАН') {
+    if (e.target.value === 'НУР-СУЛТАН' || e.target.value === 'ШЫМКЕНТ') {
         disableDistricts();
     } else if (e.target.value === 'АЛМАТЫ') {
         enableDistricts();
@@ -283,6 +294,21 @@ function processRecords() {
         // const uniques = [new Set(records.map(record => record.attributes['FD1R141P1']))];
         // console.log(uniques)
         records = filterByCity(records, request.city);
+        // April 20, 2021
+        // records = records.filter(record => record.attributes['RTA_DATE'] < 1618855200000)
+        // April 20, 2020
+        // records = records.filter(record => record.attributes['RTA_DATE'] < 1587319200000)
+        // April 20, 2019
+        // records = records.filter(record => record.attributes['RTA_DATE'] < 1555696800000)
+        // if (request.year === '2021') {
+        //     records = records.filter(record => record.attributes['RTA_DATE'] < 1618855200000)
+        // } 
+        // if (request.year === '2020') {
+        //     records = records.filter(record => record.attributes['RTA_DATE'] < 1587319200000)
+        // } 
+        // if (request.year === '2019') {
+        //     records = records.filter(record => record.attributes['RTA_DATE'] < 1555696800000)
+        // }
         if (request.city === 'АЛМАТЫ') {
             records = filterByDistrict(records);
         }
@@ -343,6 +369,7 @@ function filterByDeathsAndInjuries(records) {
     if (!request.injury) {
         newRecords = newRecords.filter(record => record.attributes['FD1R13P1'] === null);
     }
+    // console.log(newRecords.map(record => record.attributes['FD1R13P2']))
     return newRecords;
 }
 
