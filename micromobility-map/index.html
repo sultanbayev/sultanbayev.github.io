@@ -8,6 +8,24 @@
     <title>Accidents</title>
 </head>
 <body>
+    <div id="controls">
+        <input type="checkbox" id="brt-lines" name="brt-lines" value="visible" onchange="setLinesViibility(this)" checked>
+        <label for="brt-lines"> Brt Line </label><br>
+        <input type="checkbox" id="lrt-lines" name="lrt-lines" value="visible" onchange="setLinesViibility(this)" checked>
+        <label for="lrt-lines"> Lrt Line </label><br>
+        <input type="checkbox" id="metro-lines" name="metro-lines" value="visible" onchange="setLinesViibility(this)" checked>
+        <label for="metro-lines"> Metro Line </label><br>
+        <input type="checkbox" id="bikeshare" name="bikeshare" value="visible" onchange="setShareVisibility(this)" checked>
+        <label for="bikeshare"> Bikeshare (stations) </label><br>
+        <input type="checkbox" id="ozim" name="ozim" value="visible" onchange="setShareVisibility(this)" checked>
+        <label for="ozim"> Ozim (stations) </label><br>
+        <input type="checkbox" id="ozim-zone" name="ozim-zone" value="visible" onchange="setZoneVisibility(this)" checked>
+        <label for="ozim-zone"> Ozim (zone) </label><br>
+        <input type="checkbox" id="jet-zone" name="jet-zone" value="visible" onchange="setZoneVisibility(this)" checked>
+        <label for="jet-zone"> Jet (zone) </label><br>
+        <input type="checkbox" id="eleven-zone" name="eleven-zone" value="visible" onchange="setZoneVisibility(this)" checked>
+        <label for="eleven-zone"> Eleven (zone) </label><br>
+    </div>
     <div id="map"></div>
     
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTvYTwtxu8XpDawVvmoKLSs_E4WGX7gMQ&libraries=visualization,drawing">
